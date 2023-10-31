@@ -14,6 +14,10 @@
 
 // Have fun!
 
+
+
+// // https://www.codewars.com/kata/5279f6fe5ab7f447890006a7/train/javascript
+
 function pickPeaks(arr){
 
 
@@ -30,11 +34,16 @@ function pickPeaks(arr){
             continue
         }
 
-        
 
+
+        if (arr[i] === arr[i + 1] && arr[i] > arr[i-1]){
+
+            peaks.push(arr[i])
+            pos.push(i)
+            
+        }
         if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]){
    
-
             peaks.push(arr[i])
             pos.push(i)
 
@@ -53,4 +62,4 @@ function pickPeaks(arr){
 
 }
 
-console.log(pickPeaks([1, 2, 2, 2, 1]))
+console.log(pickPeaks([1,2,5,4,3,2,3,6,4,1,2,3,3,4,5,3,2,1,2,3,5,5,4,3]))
