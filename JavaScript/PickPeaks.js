@@ -15,17 +15,17 @@
 // Have fun!
 
 
-
 // // https://www.codewars.com/kata/5279f6fe5ab7f447890006a7/train/javascript
 
 function pickPeaks(arr){
 
-
     let peaks = []
     let pos = []
-
+    let plateauPos = 0
+    let falsePlateau= false
 
     for (let i = 0; i < arr.length; i++){
+
         if (i === 0){
             continue
         }
@@ -34,14 +34,34 @@ function pickPeaks(arr){
             continue
         }
 
+        if(arr[i] === arr[i+1]){
+
+            if(arr[i] < arr[i-1]){
+                falsePlateau = true
+                continue
+            }
+
+            if (arr[i+1] > arr[i+2]){
+                if (falsePlateau) {
+                    continue
+                } else {
+
+                    peaks.push(arr[i])
+                    pos.push( i - plateauPos )
+                }
+            }
+
+            if (arr[i+1] < arr[i+2]){
+                plateauPos = 0
+            } else {
+
+                plateauPos++
+            }
 
 
-        if (arr[i] === arr[i + 1] && arr[i] > arr[i-1]){
-
-            peaks.push(arr[i])
-            pos.push(i)
-            
+            continue
         }
+
         if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]){
    
             peaks.push(arr[i])
@@ -49,17 +69,13 @@ function pickPeaks(arr){
 
         }
 
-
-
-
-
-        
     }
-    console.log(peaks)
-    console.log(pos)
+    
+    // console.log(peaks)
+    // console.log(pos)
 
     return {pos: pos, peaks: peaks}
 
 }
 
-console.log(pickPeaks([1,2,5,4,3,2,3,6,4,1,2,3,3,4,5,3,2,1,2,3,5,5,4,3]))
+console.log(pickPeaks([2,1,3,2,2,2,2,1]))
