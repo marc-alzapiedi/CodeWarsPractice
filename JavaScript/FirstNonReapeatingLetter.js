@@ -16,15 +16,17 @@ function firstNonRepeatingLetter(s) {
         let newArr = arr.filter(char => 
             char !== /(.).*\1/.exec(sCase)[1]
         )
-        sCase = newArr.toString().replaceAll(',', '')
+        sCase = newArr.toString()
+        console.log(sCase)
 
         
 
     }
+    // console.log(s[s.indexOf(sCase)], sCase[0])
 
     if(sCase.length > 1){
 
-        if (sCase[0] !== s[s.indexOf(sCase)]){
+        if (sCase[0] !== s[s.indexOf(sCase[0])]){
             return(sCase[0].toUpperCase())
         }
         return(sCase[0])
@@ -39,4 +41,4 @@ function firstNonRepeatingLetter(s) {
     // Add your code here
 }
 
-console.log(firstNonRepeatingLetter("moonmen"))
+console.log(firstNonRepeatingLetter("Hi, this is a replication of a letter case"))
